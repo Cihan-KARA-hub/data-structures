@@ -1,0 +1,49 @@
+package stackalgoritma;
+
+/**
+ *
+ * @author cihan
+ */
+public class queue {
+    int [] stack;
+    int first,last,size,kapasite;
+    
+     queue(int kapasite){
+        this.kapasite=kapasite;
+    stack =new int[kapasite];
+    last=-1;
+    first=0;
+    size=0;
+    }
+    boolean boşMu(){
+    return size==0;
+    }
+    
+    boolean doluMu(){
+    return size==kapasite;
+    }
+    void kuyrukEkle(int eleman){
+    if(doluMu()==false){
+        last++;   
+      stack[last]=eleman;
+        size++;
+        System.out.println(" ekleniyor :"+ eleman);
+    
+    }
+    else{
+        System.out.println("doluuu");
+    }
+    }
+    void çıkar(){
+    if(boşMu()==false){
+         System.out.println(" çıkarılıyor :"+stack[first]);
+        first++;
+        size--;
+        
+    }
+    else{
+        System.out.println("boşaldı...");}
+       
+    }
+    
+}

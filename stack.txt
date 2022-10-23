@@ -1,0 +1,86 @@
+package stackogr;
+
+
+public class StackOgr {
+
+    /**
+    Bir örencinin numarasını  adını ve vize nuotunu tutan bir stack yapısı ve en yüksek vize notunu hesaplayan algoritma.
+    * 
+     */
+    public static void main(String[] args) {
+ 
+ stackFrom a= new stackFrom();
+       
+    }
+    
+}
+   class node 
+ {
+int numara;
+String isim;
+int vize;
+node (int numara , String isim,int vize){
+
+this.numara=numara;
+this.isim=isim;
+this.vize=vize;
+}
+}
+ class stack
+{
+    
+    
+int top=-1;
+node ogr [];
+int size ;
+
+       stack(int size){
+            this.size=size; 
+           ogr=new node[size];
+}
+       void push(node eleman){
+          
+       if(top==size){
+           System.out.println(" stack yapın dolu...");
+       }
+       else{
+       top++;
+       ogr[top]=eleman;
+           System.out.println(" eleman ekleniyor :"+ogr[top].isim+" numara :  "+ogr[top].numara+" vize: "+ogr[top].vize);
+       }
+       }
+       
+       void pop(){
+       if(top==-1)System.out.println(" stack yapısında çıkarılacak eleman yok ...");
+       else{
+           System.out.println("en bastaki eleman  " + ogr[top].isim);
+       top--;
+       }
+       }
+       
+       void enYüksekVize(){
+           int tut=0;
+           
+      while(top!=-1){
+      if(tut<=ogr[top].vize){
+          
+           tut=ogr[top].vize;
+          
+      }
+    
+      pop();
+       
+      }
+      System.out.println("en yuksek vize notu "+ tut);
+      
+       }
+
+   void goster(){
+   while(top!=-1){
+       System.out.println("en son giren ogrenci : "+ogr[top].isim);
+       top--;
+   }
+   }
+       
+       
+}
