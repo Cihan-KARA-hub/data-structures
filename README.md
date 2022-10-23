@@ -5,6 +5,12 @@
  * - baştan ve sondan eleman silme 
  * - yanyana tekrar eden elemanları silme
  * - elemanları listeleme
- *  YIĞIT VE KUYRUK VERİ YAPISI
+ *  STACK : 
+ * öğrencilerin en yüksek vizesini hesaplayan algoritma .
+  * ekleme (push)
+  * çıkarma (pop)
+  *  son giren elemanı gösterme (peek)
+  * QUEUE:
+  * genel yapılar:
  */
 
