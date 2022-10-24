@@ -12,5 +12,7 @@
   *  son giren elemanı gösterme (peek)
   * QUEUE:
   * genel yapılar
+  
+  Liste yapısı ile infix bir ifadeyi postfix bir ifadeye çevirme algoritması yazdım fakat bazı buglar var revize edilmeli daha tam değil !!!
  */
 
