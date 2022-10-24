@@ -1,0 +1,116 @@
+package ınfixtopostfix;
+
+import java.util.*;
+
+/**
+ *
+ * @author cihan
+ */
+class data {
+    
+    char veri;
+
+    public data(char veri) {
+        this.veri = veri;
+    }
+
+}
+
+class stack {
+
+    List<data> arr;
+    int top = -1;
+
+    public stack() {
+        arr = new ArrayList<data>();
+    }
+
+    boolean isEmpty() {
+        if (top == -1) {
+            return true;
+        }
+        return false;
+    }
+
+    void push(data eleman) {
+        top++;
+        arr.add(top, eleman);
+        System.out.println(" eleman eklendi:  " + arr.get(top).veri);
+    }
+
+    void pop() {
+         data temp= arr.get(top);
+        if (!isEmpty()) {
+            System.out.println(arr.get(top).veri+"  siliniyor");
+            arr.remove(top);
+            top--;
+            
+            
+        }
+        System.out.println(" liste bos");
+       
+    }
+
+    char peek() {
+        return arr.get(top).veri;
+    }
+
+    String çevirme(String s) {
+        String  postfix =null;
+        int lenght = s.length();
+        for (int i = 0; i < lenght; i++) {
+            data a = new data(s.charAt(i));
+            
+            if ((s.charAt(i) == '*') || (s.charAt(i) == '/') || (s.charAt(i) == '+') || (s.charAt(i) == '-')) {
+                while(!isEmpty()){
+                    char temp=arr.get(top).veri;
+                    if(s.charAt(i)=='('){
+                    break;
+                    }
+                    if(büyükEsit(s.charAt(i))){
+                        postfix=postfix+temp;
+                        pop();
+                    
+                    }
+                    else {
+                    break;
+                    }
+                }
+                
+
+            } else if (s.charAt(i) == '(') {
+                push(a);
+
+            } else if (s.charAt(i) == ')') {
+                char temp2=arr.get(top).veri;
+                 
+                while(!isEmpty()){
+                if(temp2=='('){
+                    break;
+                }
+                postfix=postfix+temp2;
+                }
+
+            } else {
+                   postfix+=a;
+            }
+            push(a);  
+
+        }
+        if(!isEmpty()){
+            char temp3=arr.get(top).veri;
+        postfix+=temp3;
+        }
+ 
+        return postfix;
+    }
+    boolean büyükEsit(char s){
+    if((arr.get(top).veri=='*')||(arr.get(top).veri=='/'))
+        if((s=='+')||(s=='-')||(s=='*')||(s=='/')){
+        return true;
+        }
+        
+       return false;
+        
+    }
+}
