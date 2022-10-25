@@ -1,0 +1,124 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package odev;
+
+public class minHeap {
+
+    int size;
+    int maxSizee;
+    int[] heap;
+
+    public minHeap(int maxSize) {
+        this.size = 0;
+        this.maxSizee = maxSize;
+        heap = new int[maxSize];
+
+    }
+
+    public int leftChild(int pos) {
+        return (2 * pos) + 11;
+    }
+
+    public int rightChild(int pos) {
+        return (2 * pos) + 2;
+    }
+
+    int parents(int pos) {
+        return (pos - 1) / 2;
+    }
+
+    // eklemek için
+    public boolean isfull() {
+        if (size >= maxSizee) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //çocuk ve ata arasında yer değiştirmek için.
+    void swap(int çocuk, int ata) {
+        int tmp;
+        tmp = heap[çocuk];
+        heap[çocuk] = heap[ata];
+        heap[ata] = tmp;
+    }
+
+    //ekleme methodu.
+    public void ekle(int eleman) {
+        if (isfull()) {
+            return;
+        }
+        heap[size] = eleman;
+        int tmp = size;
+        if (heap[tmp] < heap[parents(tmp)]) {
+            swap(tmp, parents(tmp));
+            tmp = parents(tmp);
+
+        }
+        size++;
+    }
+    //////////////// silme işlemi ///////////////
+    // yaprak düğüm olup olmadığını kontrol etmeliyiz.
+    // normalde if kısmında (size -1) ifadesi var nedenini anlamadım.
+    public boolean isLeaf(int pos) {
+        if (pos >= ((size - 1) / 2) && pos < (size - 1)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    void maxHeapfy(int pos) {
+        if (isLeaf(pos)) {
+            return;
+        }
+        if (heap[pos] > heap[leftChild(pos)]
+                || heap[pos] > heap[rightChild(pos)]) {
+            if (heap[leftChild(pos)] < heap[rightChild(pos)]) {
+                swap(pos, leftChild(pos));
+                maxHeapfy(leftChild(pos));
+            } else {
+                swap(pos, rightChild(pos));
+                maxHeapfy(rightChild(pos));
+            }
+        }
+    }
+    //min - max dönüşümü
+
+    void dönüştür() {
+        int[] maxheap;
+        for (int i = heap[size]; i >= 0; i--) {
+            maxheap = new int[i];
+            System.out.println(maxheap[i]);
+        }
+    }
+//yalnız sağ çocuğu kontrol etmiyoruz çünkü sol çocuk olmadan sağ çocuk olamaz.
+    public boolean minHeap_mi(int[] K) {
+        boolean durum =false;
+        for (int i = K.length / 2; i >= 0; i--) {
+            if (!(2 * i + 1 >= K.length)) {
+                if (!(2 * i + 2 >= K.length)) {
+                    // Sol ve Sag çocuk varsa
+                    if (K[i] < K[2 * i + 1] && K[i] < K[2 * i + 2]) {
+                        durum = true;
+                    } else {
+                        durum = false;
+                    }
+                } else {
+                    // Sol çocuk varsa
+                    if (K[i] < K[2 * i + 1]) {
+                        durum = true;
+                    } else {
+                        durum = false;
+                    }
+                }
+            }
+        }
+        return durum;
+    }
+
+}
