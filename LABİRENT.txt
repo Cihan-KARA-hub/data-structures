@@ -1,0 +1,119 @@
+package labirent_cozme;
+
+class stack {
+
+    int top = -1;
+    int stack[];
+    int size = 25;
+    int arr[][] = new int[][]{  {0, 1, 1, 1, 1},
+                                {0, 0, 1, 1, 1},
+                                {1, 0, 0, 0, 1},
+                                {1, 0, 0, 1, 1},
+                                {1, 1, 0, 0, 0}};
+
+    public stack() {
+        this.size = size;
+        stack = new int[size];
+    }
+
+    boolean isEmpty() {
+
+        if (top == -1) {
+
+            return true;
+        }
+        return false;
+    }
+
+    boolean doluMu() {
+        if (top == size) {
+            return true;
+        }
+        return false;
+
+    }
+
+    void push(int eleman) {
+        if (!doluMu()) {
+            top++;
+            stack[top] = eleman;
+
+        } else {
+            System.out.println(" stack dolu...");
+        }
+
+    }
+
+    void pop() {
+
+        if (!isEmpty()) {
+
+            top--;
+        } else {
+            System.out.println(" liste boş");
+        }
+    }
+
+    int peek() {
+
+        if (!isEmpty()) {
+            int a =stack[top];
+           return  a ;
+        } else {
+            return 0;
+        }
+        
+
+    }
+
+    void matrisGöster() {
+
+        for (int i = 0; i < 5; i++) {
+
+            for (int j = 0; j < 5; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println("\n");
+
+        }
+
+    }
+
+    void yolBul() {
+        int i = 0;
+        int j = 0;
+        while (i >= 0 && i < 5) {
+            while (j >= 0 && j < 5) {
+
+                if (arr[i][j] == 0) {
+                    push(arr[i][j]);
+                    System.out.println(i + " " + j);
+                    peek();
+
+                    j++;
+
+                } else if (arr[i][j] != 0) {
+                    j--;
+                    peek();
+
+                    break;
+                } else {
+                    j--;
+                    
+
+                    break;
+                }
+
+            }
+            if (arr[i][j] == 0) {
+                push(arr[i][j]);
+                 System.out.println(i + " " + j);
+             i++;
+            }
+            
+
+        }
+
+    }
+
+   }
