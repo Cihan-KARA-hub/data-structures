@@ -1,0 +1,124 @@
+package deximaltobinary;
+
+/**
+ * Stac veri yapısı ile deximal sayıyı binary tabana çevirme.
+ * Stack veri yapısı ile binary sayıyı deximal tabana çevirme.
+ * Stack veri yapısı ile deximal sayıyı hex tabana çevirme.
+ * 
+ *
+ * @author cihan
+ */
+public class DeximalToBinary {
+
+    int top = -1;
+    int size;
+    int arr[];
+
+    public DeximalToBinary(int size) {
+        this.size = size;
+        arr = new int[size];
+
+    }
+
+    boolean isEmpty() {
+        if (top == -1) {
+            return true;
+        } else {
+            return false;
+        }
+
+    
+    }
+    boolean doluMu(){
+    if(top==size ){
+     return  true;
+    }
+    else {
+    return  false ;}
+    
+    }
+      void push(int eleman){
+      if(!doluMu()){
+      top++;
+      arr[top]=eleman;
+      }
+      else {
+          System.out.println(" stack dolu ");
+      }
+      }
+      void pop(){
+      if(!isEmpty()){
+      
+      top--;
+      }
+      
+      
+      }
+      int  peek(){
+          
+         return arr[top];
+      }
+      void  deximalToBinary(int  sayı){
+          int  temp;
+          
+          
+          while(sayı>=2){
+             temp=sayı%2;
+             sayı =sayı/2;
+              push(temp);
+          
+          }
+          push(sayı);
+      
+           elemanlarıGöster();
+      }
+      void elemanlarıGöster(){
+      while(!isEmpty()){
+          System.out.print(" "+peek()+"  ");
+          pop();
+      }
+          
+      }
+      void binaryToDeximal(String binarySayı){
+      int temp=binarySayı.length();
+      char b;
+       double tut = 0;
+       double tut3;
+      double tut2=0;
+      
+          for (int i = 0; i < temp; i++) {
+              b=binarySayı.charAt(i);
+              if(b==49){
+              
+              push(1);
+              }
+              else {
+                  push(0);}
+              
+            
+              
+          }
+         
+          while(!isEmpty()){
+               tut =((Math.pow(2, tut2))*peek())+tut;
+                pop();
+                
+          tut2++;
+          }
+          System.out.println(" deximal sekli "+tut);
+      
+      
+      
+      }
+      
+
+    public static void main(String[] args) {
+     DeximalToBinary a = new DeximalToBinary(10);
+     a.deximalToBinary(20);
+     a.elemanlarıGöster();
+     a.binaryToDeximal("11111111");
+     a.elemanlarıGöster();
+     
+    }
+
+}
