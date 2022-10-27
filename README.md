@@ -13,11 +13,11 @@
   * QUEUE:
   * genel yapılar
   
-  Liste yapısı ile infix bir ifadeyi postfix bir ifadeye çevirme algoritması yazdım fakat bazı buglar var revize edilmeli daha tam değil !!!
+  * Liste yapısı ile infix bir ifadeyi postfix bir ifadeye çevirme algoritması yazdım fakat bazı buglar var revize edilmeli daha tam değil .
   
-  STACK İLE LABİRENTTE ÇIKIŞI BULMA  HATALI!!!
+  * Stack ile labirent problemi.
   * Stac veri yapısı ile deximal sayıyı binary tabana çevirme.
- * Stack veri yapısı ile binary sayıyı deximal tabana çevirme.
- * Stack veri yapısı ile deximal sayıyı hex tabana çevirme.
+  * Stack veri yapısı ile binary sayıyı deximal tabana çevirme.
+  * Stack veri yapısı ile deximal sayıyı hex tabana çevirme.
  */
 
