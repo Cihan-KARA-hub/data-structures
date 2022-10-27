@@ -1,0 +1,94 @@
+package stackalgoritma;
+
+/**
+ *
+ * @author cihan
+ */
+ class stack {
+
+    int top = -1;
+    int size;
+    int arr[];
+
+    public stack(int size) {
+        this.size = size;
+        arr = new int[size];
+
+    }
+
+    boolean isEmpty() {
+        return top == -1;
+
+    
+    }
+    boolean doluMu(){
+    if(top==size ){
+     return  true;
+    }
+    else {
+    return  false ;}
+    
+    }
+      void push(int eleman){
+      if(!doluMu()){
+      top++;
+      arr[top]=eleman;
+      }
+      else {
+          System.out.println(" stack dolu ");
+      }
+      }
+      int pop(){
+      if(!isEmpty()){
+      int x=top-1;
+      top--;
+   return x;
+      
+      }
+      return 0;
+      
+      }
+      int  peek(){
+          int x=arr[top];
+         return x;
+      }
+ }
+public class queue {
+    stack s1= new stack(3);
+    stack s2= new stack(3);
+    void kuyruk (int x ){
+    
+    while(!s1.isEmpty()){
+        
+    s2.push(s1.peek());
+    s1.pop();
+    
+    }
+    s1.push(x);
+        while (!s2.isEmpty()) {
+            
+      s1.push(s2.peek());
+      s2.pop();
+        }
+        System.out.print( x+"  <--- ");
+    }
+    void  pop(){
+        
+        
+        if(s1.isEmpty()){
+            System.out.println(" kuyruk boş");
+        
+        }
+        System.out.println("  dequeue "+s1.peek());
+         s1.pop();
+         
+                 
+                
+        
+        
+    }
+ 
+  
+ 
+    
+}
