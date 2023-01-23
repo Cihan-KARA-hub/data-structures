@@ -1,0 +1,100 @@
+
+class kuyruk{
+    dügüm root;
+    kuyruk(){
+        root=null;
+    }
+    public void ekle(int deger){
+
+        if(root==null){
+            root= new dügüm(deger);
+        }
+        else{
+            dügüm tmp=root;
+            while (tmp.next!=null){
+                tmp=tmp.next;
+            }
+            tmp.next=new dügüm(deger);
+        }
+
+    }
+    int çıkar(){
+        if(root==null){
+            System.out.println("kuyeuk boş");
+            return  -1;
+        }
+        else {
+            int silinecek =root.deger;
+            root= root.next;
+            return  silinecek;
+        }
+
+    }
+    public boolean isEmpty(){
+        if(root==null) return  true;
+        else return  false;
+    }
+    public void Listele(){
+        dügüm tmp = root;
+        while ( tmp.next!=null){
+            System.out.println(tmp.deger+" ");
+            tmp=tmp.next;
+        }
+    }
+
+
+}
+class  dügüm {
+    dügüm next;
+    int deger;
+
+dügüm(){
+
+}
+dügüm(int eleman){
+    this.deger=eleman;
+
+}
+
+
+}
+class Algo{
+    int matrix[][]=new int[6][6];
+    int ziyater[]= new int[6];
+    kuyruk bfs=new kuyruk();
+    Algo(){
+        matrix[0][1]=1;
+        matrix[0][2]=1;
+        matrix[0][3]=1;
+        matrix[2][4]=1;
+        matrix[3][5]=1;
+        matrix[2][5]=1;
+
+    }
+     public void bfsGez(int dügüm){
+        int v =dügüm;
+        System.out.println(v);
+        ziyater[v]=1;
+        bfs.ekle(v);
+        while (!bfs.isEmpty()){
+            // komşu bul
+            for (int i=0 ;i<6;i++){
+                bfs.çıkar();
+                if(matrix[v][i]==1 && ziyater[i]==0){
+                    bfs.ekle(i);
+                   ziyater[i]=1;
+                    System.out.println(i);
+                }
+            }
+            bfs.çıkar();
+        }
+     }
+
+}
+public class BFS {
+    public static void main(String[] args) {
+        Algo a= new Algo();
+        a.bfsGez(1);
+    }
+
+}
