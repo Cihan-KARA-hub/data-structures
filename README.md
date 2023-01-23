@@ -20,4 +20,6 @@
   * Stack veri yapısı ile binary sayıyı deximal tabana çevirme.
   * Stack veri yapısı ile deximal sayıyı hex tabana çevirme.
  */
+ * GRAPH yapıları
+ * BFS
 
